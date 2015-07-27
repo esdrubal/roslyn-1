@@ -2600,7 +2600,7 @@ fruit.Skip(1).Where(s => s.Length > 4).Count()
         }
 
         [WorkItem(541166)]
-        [Fact]
+        [ConditionalFact(typeof(WindowsOnly))]
         public void DefineExtensionMethods()
         {
             var engine = new CSharpScriptEngine();
