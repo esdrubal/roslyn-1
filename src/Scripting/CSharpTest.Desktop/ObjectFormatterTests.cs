@@ -79,6 +79,17 @@ namespace Microsoft.CodeAnalysis.Scripting.CSharp.UnitTests
             Assert.Equal("SortedList(1) { { int[1] { 3 }, int[1] { 4 } } }", str);
         }
 
+        [Fact]
+        public void DebuggerProxy_FrameworkTypes_IEnumerable()
+        {
+            string str;
+            object obj;
+
+            obj = Enumerable.Range(0, 10);
+            str = CSharpObjectFormatter.Instance.FormatObject(obj, s_inline);
+            Assert.Equal("RangeIterator { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }", str);
+        }
+
         // TODO: move to portable
         [Fact]
         public void VBBackingFields_DebuggerBrowsable()
